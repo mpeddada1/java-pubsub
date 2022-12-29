@@ -42,9 +42,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.junit.rules.Timeout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ITPubSubTest {
-
+  private static final Logger LOGGER = LoggerFactory.getLogger(ITPubSubTest.class);
   private static final String NAME_SUFFIX = UUID.randomUUID().toString();
   private static TopicAdminClient topicAdminClient;
   private static SubscriptionAdminClient subscriptionAdminClient;
@@ -83,6 +85,7 @@ public class ITPubSubTest {
 
   @BeforeClass
   public static void setupClass() throws Exception {
+    LOGGER.info("Testing logging in PubSub integration tests");
     topicAdminClient = TopicAdminClient.create();
     subscriptionAdminClient = SubscriptionAdminClient.create();
     projectId = ServiceOptions.getDefaultProjectId();
