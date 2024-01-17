@@ -21,6 +21,7 @@ package pubsub;
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.gax.core.ExecutorProvider;
+import com.google.api.gax.core.VTExecutorProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
@@ -30,13 +31,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class PublishWithConcurrencyControlExample {
   public static void main(String... args) throws Exception {
     // TODO(developer): Replace these variables before running the sample.
-    String projectId = "your-project-id";
-    String topicId = "your-topic-id";
+    String projectId = "mpeddada-tes";
+    String topicId = "vt-topic";
 
     publishWithConcurrencyControlExample(projectId, topicId);
   }
@@ -51,11 +53,12 @@ public class PublishWithConcurrencyControlExample {
       // Provides an executor service for processing messages. The default
       // `executorProvider` used by the publisher has a default thread count of
       // 5 * the number of processors available to the Java virtual machine.
-      ExecutorProvider executorProvider =
-          InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(4).build();
+//      ExecutorProvider executorProvider =
+//          InstantiatingExecutorProvider.newBuilder().setExecutorThreadCount(4).build();
 
       // `setExecutorProvider` configures an executor for the publisher.
-      publisher = Publisher.newBuilder(topicName).setExecutorProvider(executorProvider).build();
+      // Set VTExecutorProvider
+      publisher = Publisher.newBuilder(topicName).setExecutorProvider(new VTExecutorProvider(Executors.newVirtualThreadPerTaskExecutor())).build();
 
       // schedule publishing one message at a time : messages get automatically batched
       for (int i = 0; i < 100; i++) {

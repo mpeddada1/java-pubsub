@@ -61,14 +61,17 @@
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax</artifactId>
+      <version>2.39.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax-grpc</artifactId>
+      <version>2.39.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax-httpjson</artifactId>
+      <version>2.39.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.threeten</groupId>
@@ -147,18 +150,21 @@
       <groupId>com.google.api</groupId>
       <artifactId>gax</artifactId>
       <classifier>testlib</classifier>
+      <version>2.39.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.google.api</groupId>
       <artifactId>gax-grpc</artifactId>
       <classifier>testlib</classifier>
+      <version>2.39.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
     <groupId>com.google.api</groupId>
       <artifactId>gax-httpjson</artifactId>
       <classifier>testlib</classifier>
+      <version>2.39.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
